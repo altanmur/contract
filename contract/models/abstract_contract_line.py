@@ -146,6 +146,14 @@ class ContractAbstractContractLine(models.AbstractModel):
              "- Custom: Depending on the recurrence to be define."
     )
     is_recurring_note = fields.Boolean(compute="_compute_is_recurring_note")
+    contract_type = fields.Selection(
+        selection=[('sale', 'Customer'), ('purchase', 'Supplier')],
+        related='contract_id.contract_type',
+        readonly=True,
+        store=True,
+        default='sale',
+        index=True,
+    )
 
     def _get_default_recurring_invoicing_offset(
         self, recurring_invoicing_type, recurring_rule_type
