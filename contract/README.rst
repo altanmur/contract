@@ -74,8 +74,7 @@ Known issues / Roadmap
 ======================
 
 * Recover states and others functional fields in Contracts.
-* Depending on the contract lines, some sections of contract
-  line have no meaning that they are propagated to certain invoices
+* Remove ``models/ir_ui_view.py`` in v13, where the workaround it contains is supported upstream.
 
 Bug Tracker
 ===========

@@ -2,7 +2,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 
-from odoo import models, fields
+from odoo import _, api, models, fields
 
 
 class Agreement(models.Model):
@@ -10,11 +10,11 @@ class Agreement(models.Model):
     _description = 'Agreement'
     _inherit = ["mail.thread", "mail.activity.mixin"]
 
-    code = fields.Char(required=True, copy=False)
-    name = fields.Char(required=True)
+    code = fields.Char(required=True, track_visibility='onchange')
+    name = fields.Char(required=True, track_visibility='onchange')
     partner_id = fields.Many2one(
         'res.partner', string='Partner', ondelete='restrict',
-        domain=[('parent_id', '=', False)])
+        domain=[('parent_id', '=', False)], track_visibility='onchange')
     company_id = fields.Many2one(
         'res.company', string='Company',
         default=lambda self: self.env['res.company']._company_default_get())
@@ -30,10 +30,25 @@ class Agreement(models.Model):
         string="Agreement Type",
         help="Select the type of agreement",
     )
+    domain = fields.Selection(
+        '_domain_selection', string='Domain', default='sale',
+        track_visibility='onchange')
     active = fields.Boolean(default=True)
-    signature_date = fields.Date()
-    start_date = fields.Date()
-    end_date = fields.Date()
+    signature_date = fields.Date(track_visibility='onchange')
+    start_date = fields.Date(track_visibility='onchange')
+    end_date = fields.Date(track_visibility='onchange')
+
+    @api.model
+    def _domain_selection(self):
+        return [
+            ('sale', _('Sale')),
+            ('purchase', _('Purchase')),
+            ]
+
+    @api.onchange('agreement_type_id')
+    def agreement_type_change(self):
+        if self.agreement_type_id and self.agreement_type_id.domain:
+            self.domain = self.agreement_type_id.domain
 
     def name_get(self):
         res = []
@@ -49,3 +64,12 @@ class Agreement(models.Model):
         'unique(code, partner_id, company_id)',
         'This agreement code already exists for this partner!'
         )]
+
+    @api.returns('self', lambda value: value.id)
+    def copy(self, default=None):
+        """Always assign a value for code because is required"""
+        default = dict(default or {})
+        if default.get('code', False):
+            return super().copy(default)
+        default.setdefault('code', _("%s (copy)") % (self.code))
+        return super().copy(default)

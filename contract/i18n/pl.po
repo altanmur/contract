@@ -341,7 +341,7 @@ msgid "Cancel allowed?"
 msgstr ""
 
 #. module: contract
-#: code:addons/contract/models/contract_line.py:1082
+#: code:addons/contract/models/contract_line.py:1092
 #, python-format
 msgid "Cancel not allowed for this line"
 msgstr ""
@@ -390,7 +390,7 @@ msgid "Company"
 msgstr ""
 
 #. module: contract
-#: code:addons/contract/models/contract.py:346
+#: code:addons/contract/models/contract.py:393
 #, python-format
 msgid "Compose Email"
 msgstr ""
@@ -523,7 +523,7 @@ msgid "Contract line '%s' start date can't be later than end date"
 msgstr ""
 
 #. module: contract
-#: code:addons/contract/models/contract_line.py:1111
+#: code:addons/contract/models/contract_line.py:1121
 #, python-format
 msgid "Contract line Un-canceled: %s<br/>- "
 msgstr ""
@@ -541,13 +541,13 @@ msgid "Contract line and its successor overlapped"
 msgstr ""
 
 #. module: contract
-#: code:addons/contract/models/contract_line.py:1090
+#: code:addons/contract/models/contract_line.py:1100
 #, python-format
 msgid "Contract line canceled: %s<br/>- "
 msgstr ""
 
 #. module: contract
-#: code:addons/contract/models/contract_line.py:882
+#: code:addons/contract/models/contract_line.py:892
 #, python-format
 msgid ""
 "Contract line for <strong>{product}</strong>\n"
@@ -557,7 +557,7 @@ msgid ""
 msgstr ""
 
 #. module: contract
-#: code:addons/contract/models/contract_line.py:962
+#: code:addons/contract/models/contract_line.py:972
 #, python-format
 msgid ""
 "Contract line for <strong>{product}</strong>\n"
@@ -569,7 +569,7 @@ msgid ""
 msgstr ""
 
 #. module: contract
-#: code:addons/contract/models/contract_line.py:1258
+#: code:addons/contract/models/contract_line.py:1268
 #, python-format
 msgid ""
 "Contract line for <strong>{product}</strong>\n"
@@ -581,7 +581,7 @@ msgid ""
 msgstr ""
 
 #. module: contract
-#: code:addons/contract/models/contract_line.py:1070
+#: code:addons/contract/models/contract_line.py:1080
 #, python-format
 msgid ""
 "Contract line for <strong>{product}</strong>\n"
@@ -593,7 +593,7 @@ msgid ""
 msgstr ""
 
 #. module: contract
-#: code:addons/contract/models/contract_line.py:1310
+#: code:addons/contract/models/contract_line.py:1320
 #, python-format
 msgid "Contract line must be canceled before delete"
 msgstr ""
@@ -604,7 +604,7 @@ msgid "Contract lines"
 msgstr ""
 
 #. module: contract
-#: code:addons/contract/models/contract.py:488
+#: code:addons/contract/models/contract.py:536
 #, python-format
 msgid ""
 "Contract manually invoiced: <a href=\"#\" data-oe-model=\"%s\" data-oe-id="
@@ -777,7 +777,7 @@ msgid "Discount (%)"
 msgstr ""
 
 #. module: contract
-#: code:addons/contract/models/abstract_contract_line.py:233
+#: code:addons/contract/models/abstract_contract_line.py:242
 #, python-format
 msgid "Discount should be less or equal to 100"
 msgstr ""
@@ -987,6 +987,13 @@ msgid "Is Follower"
 msgstr ""
 
 #. module: contract
+#: model:ir.model.fields,field_description:contract.field_contract_abstract_contract_line__is_recurring_note
+#: model:ir.model.fields,field_description:contract.field_contract_line__is_recurring_note
+#: model:ir.model.fields,field_description:contract.field_contract_template_line__is_recurring_note
+msgid "Is Recurring Note"
+msgstr ""
+
+#. module: contract
 #: model_terms:ir.ui.view,arch_db:contract.contract_line_wizard_stop_form_view
 msgid "Is suspension without end date"
 msgstr ""
@@ -1058,6 +1065,11 @@ msgstr ""
 #. module: contract
 #: model:ir.model.fields,field_description:contract.field_contract_contract__message_main_attachment_id
 msgid "Main Attachment"
+msgstr ""
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_contract_contract__manual_currency_id
+msgid "Manual Currency"
 msgstr ""
 
 #. module: contract
@@ -1246,7 +1258,7 @@ msgid "Plan successor allowed?"
 msgstr ""
 
 #. module: contract
-#: code:addons/contract/models/contract_line.py:945
+#: code:addons/contract/models/contract_line.py:955
 #, python-format
 msgid "Plan successor not allowed for this line"
 msgstr ""
@@ -1257,7 +1269,7 @@ msgid "Planned"
 msgstr ""
 
 #. module: contract
-#: code:addons/contract/models/contract.py:299
+#: code:addons/contract/models/contract.py:351
 #, python-format
 msgid "Please define a %s journal for the company '%s'."
 msgstr ""
@@ -1310,6 +1322,13 @@ msgstr ""
 #: model:ir.model.fields,field_description:contract.field_contract_line__quantity
 #: model:ir.model.fields,field_description:contract.field_contract_template_line__quantity
 msgid "Quantity"
+msgstr ""
+
+#. module: contract
+#: selection:contract.abstract.contract.line,recurring_rule_type:0
+#: selection:contract.line,recurring_rule_type:0
+#: selection:contract.template.line,recurring_rule_type:0
+msgid "Quarter(s)"
 msgstr ""
 
 #. module: contract
@@ -1394,6 +1413,13 @@ msgstr ""
 #: selection:contract.template.line,display_type:0
 #: model_terms:ir.ui.view,arch_db:contract.contract_abstract_contract_line_form_view
 msgid "Section"
+msgstr ""
+
+#. module: contract
+#: selection:contract.abstract.contract.line,recurring_rule_type:0
+#: selection:contract.line,recurring_rule_type:0
+#: selection:contract.template.line,recurring_rule_type:0
+msgid "Semester(s)"
 msgstr ""
 
 #. module: contract
@@ -1492,7 +1518,7 @@ msgid "Stop allowed?"
 msgstr ""
 
 #. module: contract
-#: code:addons/contract/models/contract_line.py:865
+#: code:addons/contract/models/contract_line.py:875
 #, python-format
 msgid "Stop not allowed for this line"
 msgstr ""
@@ -1503,7 +1529,7 @@ msgid "Stop/Plan successor allowed?"
 msgstr ""
 
 #. module: contract
-#: code:addons/contract/models/contract_line.py:1006
+#: code:addons/contract/models/contract_line.py:1016
 #, python-format
 msgid "Stop/Plan successor not allowed for this line"
 msgstr ""
@@ -1558,7 +1584,7 @@ msgid "Technical field for UX purpose."
 msgstr ""
 
 #. module: contract
-#: code:addons/contract/models/contract.py:516
+#: code:addons/contract/models/contract.py:571
 #: model_terms:ir.ui.view,arch_db:contract.contract_contract_form_view
 #: model_terms:ir.ui.view,arch_db:contract.contract_contract_terminate_form_view
 #, python-format
@@ -1647,7 +1673,7 @@ msgid "Un-cancel"
 msgstr ""
 
 #. module: contract
-#: code:addons/contract/models/contract_line.py:1103
+#: code:addons/contract/models/contract_line.py:1113
 #, python-format
 msgid "Un-cancel not allowed for this line"
 msgstr ""
@@ -1705,6 +1731,11 @@ msgid "Validate"
 msgstr ""
 
 #. module: contract
+#: model:ir.model,name:contract.model_ir_ui_view
+msgid "View"
+msgstr ""
+
+#. module: contract
 #: model:ir.model.fields,field_description:contract.field_contract_contract__website_message_ids
 msgid "Website Messages"
 msgstr ""
@@ -1757,13 +1788,13 @@ msgid "Year(s)"
 msgstr ""
 
 #. module: contract
-#: code:addons/contract/models/contract.py:530
+#: code:addons/contract/models/contract.py:585
 #, python-format
 msgid "You are not allowed to terminate contracts."
 msgstr ""
 
 #. module: contract
-#: code:addons/contract/models/contract_line.py:815
+#: code:addons/contract/models/contract_line.py:825
 #, python-format
 msgid "You can't delay a contract line invoiced at least one time."
 msgstr ""
